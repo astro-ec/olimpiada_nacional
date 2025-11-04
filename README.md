@@ -1,2 +1,2 @@
-# olimpiada_nacional
-Material academico de la Olimpiada Nacional de Astronomia
+# Recursos académicos
+Olimpiadas Ecuatorianas de Astronomía y Astrofísica
