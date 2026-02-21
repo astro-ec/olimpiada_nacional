@@ -2,7 +2,7 @@
 
 ## 2026.02.21
 
-- Revisar el documento `2026.02.21.pdf`.
+- Revisar el documento [2026.02.21.pdf](https://github.com/astro-ec/olimpiada_nacional/blob/main/AstroPos/2026.02.21.pdf).
 - Resolver el segundo problema.
 - Enviar las soluciones completas a `daniel.villarruel@yachaytech.edu.ec`.
 
