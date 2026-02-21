@@ -6,6 +6,6 @@
 - Resolver el segundo problema.
 - Enviar las soluciones completas a `daniel.villarruel@yachaytech.edu.ec`.
 
-No utilizar IA, revisar clases grabadas o preguntar por correo.  
+No utilizar IA, revisar clases grabadas o preguntar por correo.
 
-Para fundamentos de trigonometría plana, pueden revisar `https://es.khanacademy.org/math/trigonometry`.
+Para fundamentos de trigonometría plana, pueden revisar [Khan Academy](https://es.khanacademy.org/math/trigonometry).
