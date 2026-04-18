@@ -66,13 +66,13 @@ Curiosamente, a pesar de ser tan diferentes, ambos datasets tienen la misma medi
 
 La **mediana** es el valor central en un dataset ordenado que separa la mitad inferior de la mitad superior. Si tenemos un dataset ordenado con un número impar de datos
 
-$$ x_1,\,x_2,\,x_3,\,x_4,\,x_5 $$
+$$ x_1,x_2,x_3,x_4,x_5 $$
 
 ¿Cuál es el término del medio? Es claramente $x_3$.
 
 Pero si tenemos un dataset ordenado con un número par
 
-$$ x_1,\,x_2,\,x_3,\,x_4,\,x_5,\,x_6 $$
+$$ x_1,x_2,x_3,x_4,x_5,x_6 $$
 
 No tenemos un único valor central. Tenemos dos. En ese caso, tenemos que promediarlos
 
@@ -80,9 +80,9 @@ $$ \text{mediana} = \dfrac{x_3 + x_4}{2} $$
 
 En este caso, tenemos dos datasets con un número par de elementos. Sus medianas son
 
-$$ x_{{\rm median},\,A} = \dfrac{25 + 25}{2} = 25 $$
+$$ x_{{\rm median},A} = \dfrac{25 + 25}{2} = 25 $$
 
-$$ x_{{\rm median},\,B} = \dfrac{20 + 30}{2} = \dfrac{50}{2} = 25 $$
+$$ x_{{\rm median},B} = \dfrac{20 + 30}{2} = \dfrac{50}{2} = 25 $$
 
 Ambos tienen la misma mediana, a pesar de ser tan diferentes.
 
@@ -120,8 +120,8 @@ Podemos tratar con nuestro dataset $A$, recordamos que $\bar{x}_A$
 
 $$
 \begin{align*} 
-\sum_{i = 1}^{n} (x_i - \bar{x}) & = (25 - 25) + (27 - 25) + (24 - 25) + (25 - 25) + (26 - 25) + (23 - 25) + (24 - 25) + (26 - 25) + (25 - 25) + (24 - 25) + (26 - 25) + (25 - 25) \\\\[5pt]
-& = 0 + 2 - 1 + 0 + 1 - 2 - 1 + 1 + 0 - 1 + 1 + 0 \\\\[5pt]
+\sum_{i = 1}^{n} (x_i - \bar{x}) & = (25 - 25) + (27 - 25) + (24 - 25) + (25 - 25) + (26 - 25) + (23 - 25) + (24 - 25) + (26 - 25) + (25 - 25) + (24 - 25) + (26 - 25) + (25 - 25) \\\\[10pt]
+& = 0 + 2 - 1 + 0 + 1 - 2 - 1 + 1 + 0 - 1 + 1 + 0 \\\\[10pt]
 & = 0
 \end{align*}
 $$
@@ -174,7 +174,7 @@ Vamos al cuadrado de la desviación estándar. Tenemos
 
 $$
 \begin{align*}
-\sum (x_i - \bar{x})^2 & = \sum (x_i^2 - 2x_i\bar{x} + \bar{x}^2) \\\\[5pt]
+\sum (x_i - \bar{x})^2 & = \sum (x_i^2 - 2x_i\bar{x} + \bar{x}^2) \\\\[10pt]
 \end{align*}
 $$
 
@@ -188,9 +188,9 @@ Ahora recordemos que $\bar{x}$, la media, es constante para todo el dataset. Se 
 
 $$
 \begin{align*}
-\sum (x_i - \bar{x})^2 & = \sum x_i^2 - 2\bar{x} \sum x_i + \bar{x}^2 \sum 1 \\\\[5pt]
-& = \sum x_i^2 - 2\bar{x} (n\bar{x}) + n\bar{x}^2 \\\\[5pt]
-& = \sum x_i^2 - 2n\bar{x}^2 + n\bar{x}^2 \\\\[5pt]
+\sum (x_i - \bar{x})^2 & = \sum x_i^2 - 2\bar{x} \sum x_i + \bar{x}^2 \sum 1 \\\\[10pt]
+& = \sum x_i^2 - 2\bar{x} (n\bar{x}) + n\bar{x}^2 \\\\[10pt]
+& = \sum x_i^2 - 2n\bar{x}^2 + n\bar{x}^2 \\\\[10pt]
 & = \sum x_i^2 - n\bar{x}^2
 \end{align*}
 $$
@@ -199,7 +199,7 @@ Por lo tanto, nuesta varianza se convierte en
 
 $$
 \begin{align*}
-\sigma^2 &= \dfrac{1}{n}\,\left( \sum x_i^2 - n\bar{x}^2 \right) \\\\[10pt]
+\sigma^2 &= \dfrac{1}{n}\left( \sum x_i^2 - n\bar{x}^2 \right) \\\\[10pt]
 & = \dfrac{\sum x_i^2}{n} - \bar{x}^2
 \end{align*}
 $$
@@ -207,20 +207,20 @@ $$
 Consideremos nuevamente $x_i$ e $y_i$ elementos de dos datasets. Tenemos a partir de lo anterior,
 
 $$
-\bar{x} = \dfrac{1}{n}\,\sum x_i,\quad\quad \bar{y}=\dfrac{1}{n}\,\sum y_i
+\bar{x} = \dfrac{1}{n}\sum x_i,\quad\quad \bar{y}=\dfrac{1}{n}\sum y_i
 $$
 
 Nos preguntamos ahora, ¿cuál es la relación entre estas dos variables? Una nueva medida que responde esta pregunta se llama **covarianza**
 
 $$
-\text{cov}(x,\,y) = \sum (x_i - \bar{x}) (y_i - \bar{y})
+\text{cov}(x,y) = \sum (x_i - \bar{x}) (y_i - \bar{y})
 $$
 
 Dependiendo del valor de esta cantidad, podemos tener
 
-- Si $\text{cov}(x,\,y) > 1$, decimos que es una relación positiva.
-- Si $\text{cov}(x,\,y) < 1$, decimos que es una relación negativa.
-- Si $\text{cov}(x,\,y) = 0$, no existe relación (o es algo complicada).
+- Si $\text{cov}(x,y) > 1$, decimos que es una relación positiva.
+- Si $\text{cov}(x,y) < 1$, decimos que es una relación negativa.
+- Si $\text{cov}(x,y) = 0$, no existe relación (o es algo complicada).
 
 ![covarianza](covariance.png)
 
@@ -234,8 +234,8 @@ Aplicamos las sumas
 
 $$
 \begin{aligned}
-\sum (x_i - \bar{x}) (y_i - \bar{y}) & = \sum x_i y_i - \bar{x} \sum y_i - \bar{y} \sum x_i + \bar{x}\bar{y}\sum 1 \\\\[5pt]
-& = \sum x_i y_i - n\bar{x}\bar{y} - n\bar{x}\bar{y} + n\bar{x}\bar{y} \\\\[5pt]
+\sum (x_i - \bar{x}) (y_i - \bar{y}) & = \sum x_i y_i - \bar{x} \sum y_i - \bar{y} \sum x_i + \bar{x}\bar{y}\sum 1 \\\\[10pt]
+& = \sum x_i y_i - n\bar{x}\bar{y} - n\bar{x}\bar{y} + n\bar{x}\bar{y} \\\\[10pt]
 & = \sum x_i y_u - n\bar{x}\bar{y}
 \end{aligned}
 $$
