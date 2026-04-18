@@ -199,7 +199,7 @@ Por lo tanto, nuesta varianza se convierte en
 
 $$
 \begin{align*}
-\sigma^2 &= \dfrac{1}{n}\,\left( \sum x_i^2 - n\bar{x}^2 \right) \\[10pt]
+\sigma^2 &= \dfrac{1}{n}\,\left( \sum x_i^2 - n\bar{x}^2 \right) \\\\[10pt]
 & = \dfrac{\sum x_i^2}{n} - \bar{x}^2
 \end{align*}
 $$
