@@ -247,22 +247,22 @@ Edwin Hubble descubrió que las galaxias se alejan de nosotros con una velocidad
 Tenemos un dataset con dos variables:
 
 - $x$: distancia desde la Tierra (Mpc)
-- $y$: velocidad de recesión (km s$^{-1}$)
+- $y$: velocidad de recesión (km/s)
 
-| Distancia (Mpc) | Velocidad (km s$^{-1}$) |
-| :-------------: | :---------------------: |
-|       11        |          1050           |
-|       20        |          1400           |
-|       28        |          1850           |
-|       36        |          2750           |
-|       45        |          3050           |
-|       54        |          3950           |
-|       66        |          4550           |
-|       73        |          5450           |
-|       87        |          5900           |
-|       96        |          7050           |
-|       110       |          7600           |
-|       122       |          8350           |
+| Distancia (Mpc) | Velocidad (km/s) |
+| :-------------: | :--------------: |
+|       11        |       1050       |
+|       20        |       1400       |
+|       28        |       1850       |
+|       36        |       2750       |
+|       45        |       3050       |
+|       54        |       3950       |
+|       66        |       4550       |
+|       73        |       5450       |
+|       87        |       5900       |
+|       96        |       7050       |
+|       110       |       7600       |
+|       122       |       8350       |
 
 Nuestra tarea es tratar de encontrar una relación entre estas dos cantidades.
 
@@ -304,7 +304,9 @@ $$
 S = \sum [y_i - (mx_i + b)]^2 = \sum (y_i - mx_i - b)^2
 $$
 
-Nuestra misión es **minimizar esta suma**, es decir, obtener el mínimo valor posible. Esto es posible usando cálculo: podemos encontrar mínimos (o máximos) obteniendo la derivada e igualandola a $0$. Por ahora, solo vamos a notar los resultados
+Nuestra misión es **minimizar esta suma**, es decir, obtener el mínimo valor posible. Este es el método de **Mínimos Cuadrados**.
+
+Esto es posible usando cálculo: podemos encontrar mínimos (o máximos) obteniendo la derivada e igualandola a $0$. Por ahora, solo vamos a notar los resultados
 
 $$
 \dfrac{\partial S}{\partial m} = - 2 \sum x_i (y_i - mx_i -b) = 0
@@ -317,5 +319,125 @@ $$
 Con la primera ecuación tenemos
 
 $$
+\begin{aligned}
+    \sum x_i y_i - m \sum x_i^2 - b\sum x_i = 0
+\end{aligned}
+$$
+
+Y con la segunda ecuación
 
 $$
+\sum y_i - m \sum x_i - nb =  0
+$$
+
+Con esta última ecuación, resolvemos para $b$
+
+$$
+\begin{aligned}
+b & = \dfrac{1}{n} (\sum y_i - m\sum x_i) \\\\
+& = \dfrac{\sum y_i}{n} - m\dfrac{\sum x_i}{n} \\\\
+& = \bar{y} - m\bar{x}
+\end{aligned}
+$$
+
+Esto es
+
+$$
+\boxed{b = \bar{y} - m\bar{x}}
+$$
+
+Utilizamos esto en la primera ecuación
+
+$$
+\begin{aligned}
+\sum x_i y_i - m \sum x_i^2 - b\sum x_i &= 0 \\\\
+\sum x_i y_i - m \sum x_i^2 - (\bar{y} - m\bar{x}) \sum x_i & = 0 \\\\
+\sum x_i y_i - m\sum x_i^2 - \bar{y}\sum x_i + m\bar{x}\sum x_i & = 0 \\\\
+\sum x_i y_i - m\sum x_i^2 - n \bar{x}\bar{y} + m n \bar{x}^2 & = 0 \\\\
+\sum x_i y_i - n\bar{x}\bar{y} - m \left(\sum x_i^2 - n\bar{x}^2 \right) & = 0\\\\
+m & = \dfrac{\sum x_i y_i - n\bar{x}\bar{y}}{\sum x_i^2 - n\bar{x}^2}
+\end{aligned}
+$$
+
+Tal que
+
+$$
+\boxed{m = \dfrac{\sum x_i y_i - n\bar{x}\bar{y}}{\sum x_i^2 - n\bar{x}^2}}
+$$
+
+Para nuestros datos, es útil entonces calcular estas cantidades
+
+- $\sum x_i$ para calcular $\bar{x}$
+
+- $\sum y_i$ para calcular $\bar{y}$
+
+- $\sum x_i^2$
+
+- $\sum x_i y_i$
+
+Esto lo podemos hacer en una tabla. En nuestro caso Distancia $=x_i$ y Velocidad $=y_i$:
+
+| $x_i$ | $y_i$ | $x_i^2$ | $x_i y_i$ |
+| :---: | :---: | :-----: | :-------: |
+|  11   | 1050  |   121   |   11550   |
+|  20   | 1400  |   400   |   28000   |
+|  28   | 1850  |   784   |   51800   |
+|  36   | 2750  |  1296   |   99000   |
+|  45   | 3050  |  2025   |  137250   |
+|  54   | 3950  |  2916   |  213300   |
+|  66   | 4550  |  4356   |  300300   |
+|  73   | 5450  |  5329   |  397850   |
+|  87   | 5900  |  7569   |  513300   |
+|  96   | 7050  |  9216   |  676800   |
+|  110  | 7600  |  12100  |  836000   |
+|  122  | 8350  |  14884  |  1018700  |
+
+Con esto es fácil calcular (con $n=12$):
+
+- $\sum x_i = 748$, $\bar{x} = 62.33$
+
+- $\sum y_i = 52950$, $\bar{y} = 4412.50$
+
+- $\sum x_i^2 = 60996$
+
+- $\sum x_i y_i = 4283850$
+
+Ocupamos nuestras ecuaciones de mínimos cuadrados:
+
+$$
+m = \dfrac{\sum x_i y_i - n\bar{x}\bar{y}}{\sum x_i^2 - n\bar{x}^2}
+$$
+
+$$
+m = 68.42
+$$
+
+$$
+b = \bar{y} - m\bar{x}
+$$
+
+$$
+b = 147.40
+$$
+
+Tal que tenemos
+
+$$
+y_i = 68.42 x_i + 147.40
+$$
+
+Ahora, como estamos analizando un sistema astrofísico, necesitamos identificar qué significa cada término. En algunos casos nos concentramos en $m$ (la pendiente) o $b$ (la intersección con el eje y).
+
+Recordemos que la ley de Hubble nos indica
+
+$$
+v = H_0 d
+$$
+
+Notamos que es muy similar a la ecuación de la recta. Si $v=y_i$ se mide en km/s, y $d=x_i$ se mide en Megapársecs, entonces
+
+$$
+H_0 = 68.42
+$$
+
+¡Hemos obtenido la constante de Hubble a partir de los datos!
