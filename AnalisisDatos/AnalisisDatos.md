@@ -434,10 +434,10 @@ $$
 v = H_0 d
 $$
 
-Notamos que es muy similar a la ecuación de la recta. Si $v=y_i$ se mide en km/s, y $d=x_i$ se mide en Megapársecs, entonces
+Notamos que es muy similar a la ecuación de la recta. Si $v=y_i$ se mide en km/s, y $d=x_i$ se mide en Megapársecs. Notamos que $m=68.42$ tiene dimensiones de $LT^{-1}L^{-1}$. Entonces
 
 $$
-H_0 = 68.42
+H_0 = 68.42\,\text{km}/\text{s}/\text{Mpc}
 $$
 
 ¡Hemos obtenido la constante de Hubble a partir de los datos!
