@@ -101,3 +101,205 @@ Primero, graficamos un **histograma** que muestre la **distribución** de los da
 <img src="DA_histograma.png" width="30%"> <img src="DB_histograma.png" width="30%">
 
 Vemos que las diferencias que observabamos a simple vista en los datasets son muy evidentes. Esta informaci\'on de c\'omo se distribuyen los datos no puede detectarse con medidas de tendencia central. Necesitamos cuantificar cómo se distribuyen estos datos.
+
+Para esto vamos a preguntarnos ¿qué tan dispersados están los datos del centro? Una primera forma en la que podemos inicar este análisis es:
+
+¿Qué tan lejos está cada dato de la media?
+
+Para un elemento dado $x_i$, su desviación de la media $\bar{x}$ es simplemente:
+
+$$ \text{Desviación} = x_i - \bar{x}$$
+
+Si un mes tuvimos $35$ llamaradas, nuestra media es $25$, su desviación es $+10$. Si tuvimos $15$ llamaradas, su desviación es $-10$.
+
+El siguiente paso lógico sería encontrar el promedio de todas las desviaciones para tener solo una medida de la "dispersión promedio". Sumando todas las desviaciones tendríamos
+
+$$ \sum_{i = 1}^{n} (x_i - \bar{x}) $$
+
+Podemos tratar con nuestro dataset $A$, recordamos que $\bar{x}_A$
+
+$$
+\begin{align*} 
+\sum_{i = 1}^{n} (x_i - \bar{x}) & = (25 - 25) + (27 - 25) + (24 - 25) + (25 - 25) + (26 - 25) + (23 - 25) + (24 - 25) + (26 - 25) + (25 - 25) + (24 - 25) + (26 - 25) + (25 - 25) \\[5pt]
+& = 0 + 2 - 1 + 0 + 1 - 2 - 1 + 1 + 0 - 1 + 1 + 0 \\[5pt]
+& = 0
+\end{align*}
+$$
+
+Este es un gran problema. Dado que la media es el "punto de balance" del dataset, las desviaciones positivas y negativas se cancelan entre sí. Para todo dataset, esta suma es exactamente cero
+
+$$ \sum_{i = 1}^{n} (x_i - \bar{x}) = 0 $$
+
+No podemos utilizar este valor para conseguir un promedio. Necesitamos buscar una forma de hacer que las desviaciones sean positivas de tal manera que se acumulen en lugar de cancelarlas.
+
+Una forma sería tomar el valor absoluto, pero trabajar con valores absolutos es difícil en álgebra y cálculo. En su lugar, vamos a utilizar el **cuadrado de las desviaciones**
+
+$$ (x_i - \bar{x})^2 \geq 0$$
+
+Ahora podemos sumar todas las desviaciones al cuadrado y dividir para el número total de elementos $n$ para encontrar el promedio de la distancia al cuadrado. Esta medida es llamada la **varianza** ($\sigma^2$)
+
+$$ \sigma^2 = \dfrac{\sum (x_i - \bar{x})^2}{n} $$
+
+Es una herramienta matemática muy útil, pero tiene una limitación importante: las unidades están al cuadrado (por ejemplo, si trabajamos con una longitud en metros, $m$, las unidades de la varianza serían metros cuadrados, $m^2$, que *parecería* tratar un área).
+
+En nuestros datasets, tenemos datos medidos en "llamaradas solares", pero nuestra varianza estaría medida en "llamaradas solares al cuadrad", una medida que no tiene sentido físico.
+
+Para volver a las unidades originales, tomamos la raíz cuadrada de la varianza. Esta es la **desviación estándar** ($\sigma$)
+
+$$ \sqrt{\sigma^2} = \sigma = \sqrt{\dfrac{\sum (x_i - \bar{x})^2}{n}} $$
+
+En nuestros datasets, tenemos
+
+$$ \sigma_A \approx 1.08 $$
+
+Este valor es pequeño, nos dice que la desviaciones son pequeñas, por lo que los datos están muy cerca de la media. Por otro lado
+
+$$ \sigma_B \approx 15.53 $$
+
+Este valor nos dice que los datos, en promedio, están mucho más alejados de la media.
+
+## Algo de álgebra
+
+Antes de continuar, vamos a establecer algunas identidades. Primero, por definición
+
+$$ \sum_{i=1}^n 1 = n $$
+
+Observamos que a partir de la media, tenemos
+
+$$ \sum x_i = n \bar{x} $$
+
+Entonces, una forma de encontrar la suma de todos los términos es multiplicar el número de datos por el valor de la media. Nada nuevo.
+
+Vamos al cuadrado de la desviación estándar. Tenemos
+
+$$
+\begin{align*}
+\sum (x_i - \bar{x})^2 & = \sum (x_i^2 - 2x_i\bar{x} + \bar{x}^2) \\[5pt]
+\end{align*}
+$$
+
+Recordemos una propiedad de la sumatoria. Sea $\alpha$ un número real (es decir,una constante), y sean $x_i$ e $y_i$ elementos de dos datasets. Tenemos
+
+$$
+\sum (\alpha x_i + y_i) = \alpha \sum x_i + \sum y_i
+$$
+
+Ahora recordemos que $\bar{x}$, la media, es constante para todo el dataset. Se comporta similar a $\alpha$, por lo cual puede salir de la sumatoria. Tenemos
+
+$$
+\begin{align*}
+\sum (x_i - \bar{x})^2 & = \sum x_i^2 - 2\bar{x} \sum x_i + \bar{x}^2 \sum 1 \\[5pt]
+& = \sum x_i^2 - 2\bar{x} (n\bar{x}) + n\bar{x}^2 \\[5pt]
+& = \sum x_i^2 - 2n\bar{x}^2 + n\bar{x}^2 \\[5pt]
+& = \sum x_i^2 - n\bar{x}^2
+\end{align*}
+$$
+
+Por lo tanto, nuesta varianza se convierte en
+
+$$
+\begin{align*}
+\sigma^2 &= \dfrac{1}{n}\,\left( \sum x_i^2 - n\bar{x}^2 \right) \\[10pt]
+& = \dfrac{\sum x_i^2}{n} - \bar{x}^2
+\end{align*}
+$$
+
+Consideremos nuevamente $x_i$ e $y_i$ elementos de dos datasets. Tenemos a partir de lo anterior,
+
+$$
+\bar{x} = \dfrac{1}{n}\,\sum x_i,\quad\quad \bar{y}=\dfrac{1}{n}\,\sum y_i
+$$
+
+Nos preguntamos ahora, ¿cuál es la relación entre estas dos variables? Una nueva medida que responde esta pregunta se llama **covarianza**
+
+$$
+\text{cov}(x,\,y) = \sum (x_i - \bar{x}) (y_i - \bar{y})
+$$
+
+Dependiendo del valor de esta cantidad, podemos tener
+
+- Si $\text{cov}(x,\,y) > 1$, decimos que es una relación positiva.
+- Si $\text{cov}(x,\,y) < 1$, decimos que es una relación negativa.
+- Si $\text{cov}(x,\,y) = 0$, no existe relación (o es algo complicada).
+
+![covarianza](covariance.png)
+
+Podemos desarrollar esta expresi\'on
+
+$$
+(x_i - \bar{x}) (y_i - \bar{y}) = x_i y_i -\bar{x}y_i - x_i\bar{y} + \bar{x}\bar{y}
+$$
+
+Aplicamos las sumas
+
+$$
+\begin{align*}
+\sum (x_i - \bar{x}) (y_i - \bar{y}) & = \sum x_i y_i - \bar{x} \sum y_i - \bar{y} \sum x_i + \bar{x}\bar{y}\sum 1 \\[5pt]
+& = \sum x_i y_i - n\bar{x}\bar{y} - n\bar{x}\bar{y} + n\bar{x}\bar{y} \\[5pt]
+& = \sum x_i y_u - n\bar{x}\bar{y}
+\end{align*}
+$$
+
+## Regresión lineal
+
+Edwin Hubble descubrió que las galaxias se alejan de nosotros con una velocidad proporcional a su distancia. Podemos medir distancias a partir de métodos indirectos, como candelas estándar, mientras que las velocidades son inferidas a partir de redshift espectral.
+
+Tenemos un dataset con dos variables:
+
+- $x$: distancia desde la Tierra (Mpc)
+- $y$: velocidad de recesión (km s$^{-1}$)
+
+| Distancia (Mpc) | Velocidad (km s$^{-1}$) |
+| :-------------: | :---------------------: |
+|       11        |          1050           |
+|       20        |          1400           |
+|       28        |          1850           |
+|       36        |          2750           |
+|       45        |          3050           |
+|       54        |          3950           |
+|       66        |          4550           |
+|       73        |          5450           |
+|       87        |          5900           |
+|       96        |          7050           |
+|       110       |          7600           |
+|       122       |          8350           |
+
+Nuestra tarea es tratar de encontrar una relación entre estas dos cantidades.
+
+El primer paso que siempre debemos realizar con los datos para poder identificar qué tipo de relación *parecen tener* es **graficar**.
+
+Colocamos la primera columna como la coordenada en el eje $x$, y la segunda columna como la coordenada en el eje $y$.
+
+![linreg1](linear_reg-1.png)
+
+Parece una relación lineal. Es decir, podríamos dibujar una línea que más o menos pueda contener todos los datos o valores muy cercanos. Dibujemos una línea entre el primer y el último punto
+
+![linreg2](linear_reg-2.png)
+
+La pregunta es ahora, ¿cómo puedo **modelar** esta relación? Es decir, ¿hay alguna forma de descubrir una ecuación que relacione la distancia y la velocidad?
+
+Este modelo es la **ecuación de una recta**:
+
+$$y = mx + b,$$
+
+donde $y$ es una función de $x$, $m$ es la **pendiente** y $b$ es la **intersección con el eje y**.
+
+Para un $x_i$ (en nuestro caso distancia) cualquiera, podríamos calcular la velocidad con $m x_i + b$. Dado que los datos no son perfectos, va a existir cierta diferencia entre la velocidad que calculamos con $mx_i + b$ y la velocidad real $y_i$.
+
+Vamos a calcular la "desviación" entre el valor calculado y el valor real. El error o residuo $r$ para una galaxia individual está dado por
+
+$$
+r_i = y_i - (m x_i + b)
+$$
+
+es decir, calculamos la diferencia entre la velocidad real y la velocidad calculada por el modelo.
+
+Para que nuestro modelo sea adecuado, ¿cuál debería ser el valor del error?
+
+Debería ser cero, es decir, no debería existir diferencia entre el valor real y el valor calculado. Ahora, si calculamos el error como está ahora, vamos a tener valores positivos y negativos que podrían calcularse entre sí, **pero esto no implica que el error sea cero**.
+
+Realizamos lo mismo que para la varianza. En lugar de la diferencia, utilizaremos la **suma del cuadrado de los residuos**:
+
+$$
+S = \sum [y_i - (mx_i + b)]^2 = \sum (y_i - mx_i - b)^2
+$$
