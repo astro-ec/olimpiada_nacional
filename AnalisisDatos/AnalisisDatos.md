@@ -233,11 +233,11 @@ $$
 Aplicamos las sumas
 
 $$
-\begin{align*}
+\begin{aligned}
 \sum (x_i - \bar{x}) (y_i - \bar{y}) & = \sum x_i y_i - \bar{x} \sum y_i - \bar{y} \sum x_i + \bar{x}\bar{y}\sum 1 \\[5pt]
 & = \sum x_i y_i - n\bar{x}\bar{y} - n\bar{x}\bar{y} + n\bar{x}\bar{y} \\[5pt]
 & = \sum x_i y_u - n\bar{x}\bar{y}
-\end{align*}
+\end{aligned}
 $$
 
 ## Regresión lineal
@@ -302,4 +302,20 @@ Realizamos lo mismo que para la varianza. En lugar de la diferencia, utilizaremo
 
 $$
 S = \sum [y_i - (mx_i + b)]^2 = \sum (y_i - mx_i - b)^2
+$$
+
+Nuestra misión es **minimizar esta suma**, es decir, obtener el mínimo valor posible. Esto es posible usando cálculo: podemos encontrar mínimos (o máximos) obteniendo la derivada e igualandola a $0$. Por ahora, solo vamos a notar los resultados
+
+$$
+\dfrac{\partial S}{\partial m} = - 2 \sum x_i (y_i - mx_i -b) = 0
+$$
+
+$$
+\dfrac{\partial S}{\partial b} = - \sum (y_i - mx_i - b)
+$$
+
+Con la primera ecuación tenemos
+
+$$
+
 $$
