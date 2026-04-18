@@ -98,6 +98,6 @@ Nuestro análisis de estos datasets con medidas de tendencia central no dio much
 
 Primero, graficamos un **histograma** que muestre la **distribución** de los datos de cada dataset:
 
-<img src="DA_histograma.png" width="49%"> <img src="DB_histograma.png" width="49%">
+<img src="DA_histograma.png" width="40%"> <img src="DB_histograma.png" width="40%">
 
 Vemos que las diferencias que observabamos a simple vista en los datasets son muy evidentes. Esta informaci\'on de c\'omo se distribuyen los datos no puede detectarse con medidas de tendencia central. Necesitamos cuantificar cómo se distribuyen estos datos.
