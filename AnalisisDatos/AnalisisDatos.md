@@ -120,8 +120,8 @@ Podemos tratar con nuestro dataset $A$, recordamos que $\bar{x}_A$
 
 $$
 \begin{align*} 
-\sum_{i = 1}^{n} (x_i - \bar{x}) & = (25 - 25) + (27 - 25) + (24 - 25) + (25 - 25) + (26 - 25) + (23 - 25) + (24 - 25) + (26 - 25) + (25 - 25) + (24 - 25) + (26 - 25) + (25 - 25) \\[5pt]
-& = 0 + 2 - 1 + 0 + 1 - 2 - 1 + 1 + 0 - 1 + 1 + 0 \\[5pt]
+\sum_{i = 1}^{n} (x_i - \bar{x}) & = (25 - 25) + (27 - 25) + (24 - 25) + (25 - 25) + (26 - 25) + (23 - 25) + (24 - 25) + (26 - 25) + (25 - 25) + (24 - 25) + (26 - 25) + (25 - 25) \\\\[5pt]
+& = 0 + 2 - 1 + 0 + 1 - 2 - 1 + 1 + 0 - 1 + 1 + 0 \\\\[5pt]
 & = 0
 \end{align*}
 $$
@@ -174,7 +174,7 @@ Vamos al cuadrado de la desviación estándar. Tenemos
 
 $$
 \begin{align*}
-\sum (x_i - \bar{x})^2 & = \sum (x_i^2 - 2x_i\bar{x} + \bar{x}^2) \\[5pt]
+\sum (x_i - \bar{x})^2 & = \sum (x_i^2 - 2x_i\bar{x} + \bar{x}^2) \\\\[5pt]
 \end{align*}
 $$
 
@@ -188,9 +188,9 @@ Ahora recordemos que $\bar{x}$, la media, es constante para todo el dataset. Se 
 
 $$
 \begin{align*}
-\sum (x_i - \bar{x})^2 & = \sum x_i^2 - 2\bar{x} \sum x_i + \bar{x}^2 \sum 1 \\[5pt]
-& = \sum x_i^2 - 2\bar{x} (n\bar{x}) + n\bar{x}^2 \\[5pt]
-& = \sum x_i^2 - 2n\bar{x}^2 + n\bar{x}^2 \\[5pt]
+\sum (x_i - \bar{x})^2 & = \sum x_i^2 - 2\bar{x} \sum x_i + \bar{x}^2 \sum 1 \\\\[5pt]
+& = \sum x_i^2 - 2\bar{x} (n\bar{x}) + n\bar{x}^2 \\\\[5pt]
+& = \sum x_i^2 - 2n\bar{x}^2 + n\bar{x}^2 \\\\[5pt]
 & = \sum x_i^2 - n\bar{x}^2
 \end{align*}
 $$
@@ -232,11 +232,13 @@ $$
 
 Aplicamos las sumas
 
+$$
 \begin{aligned}
-\sum (x_i - \bar{x}) (y_i - \bar{y}) & = \sum x_i y_i - \bar{x} \sum y_i - \bar{y} \sum x_i + \bar{x}\bar{y}\sum 1 \\[5pt]
-& = \sum x_i y_i - n\bar{x}\bar{y} - n\bar{x}\bar{y} + n\bar{x}\bar{y} \\[5pt]
+\sum (x_i - \bar{x}) (y_i - \bar{y}) & = \sum x_i y_i - \bar{x} \sum y_i - \bar{y} \sum x_i + \bar{x}\bar{y}\sum 1 \\\\[5pt]
+& = \sum x_i y_i - n\bar{x}\bar{y} - n\bar{x}\bar{y} + n\bar{x}\bar{y} \\\\[5pt]
 & = \sum x_i y_u - n\bar{x}\bar{y}
 \end{aligned}
+$$
 
 ## Regresión lineal
 
